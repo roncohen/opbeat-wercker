@@ -1,0 +1,7 @@
+name: notify-opbeat
+version: 0.0.1
+description: Notifies Opbeat of releases
+keywords:
+  - opbeat
+  - deployment
+  - release
