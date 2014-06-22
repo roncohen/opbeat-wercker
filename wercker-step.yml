@@ -1,4 +1,4 @@
-name: notify-opbeat
+name: opbeat-notify
 version: 0.0.1
 description: Notifies Opbeat of releases
 keywords:
