@@ -27,3 +27,7 @@ deploy:
         app_id: $OPBEAT_APP_ID
         secret_token: $OPBEAT_SECRET_TOKEN
 ```
+
+Screenshot of the wercker interface set up with environment variables:
+
+![Wercker environment variables for opbeat_notify](http://f.cl.ly/items/201d3O2s2g2B1v1X1S23/Screen%20Shot%202014-06-23%20at%2011.54.10%20am.png)
