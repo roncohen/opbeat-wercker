@@ -29,7 +29,8 @@ result=`curl https://opbeat.com/api/v1/organizations/$WERCKER_OPBEAT_NOTIFY_ORG_
     -d rev=$WERCKER_GIT_COMMIT \
     -d branch=$WERCKER_GIT_BRANCH \
     -d status=completed \
-    --write-out "%{http_code}"`
+    --write-out "%{http_code}" \
+    --output /dev/stderr`
 
 if [ "$result" = "200" ]; then
   success "Notified Opbeat"
