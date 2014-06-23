@@ -28,7 +28,7 @@ result=`curl https://opbeat.com/api/v1/organizations/$WERCKER_OPBEAT_NOTIFY_ORG_
     -H "Authorization: Bearer $WERCKER_OPBEAT_NOTIFY_SECRET_TOKEN" \
     -d rev=$WERCKER_GIT_COMMIT \
     -d branch=$WERCKER_GIT_BRANCH \
-    -d status=completed
+    -d status=completed \
     --write-out "%{http_code}"`
 
 if [ "$result" = "200" ]; then
