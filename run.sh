@@ -24,6 +24,15 @@ then
     fail 'missing or empty option secret_token, please check wercker.yml'
 fi
 
+echo curl https://opbeat.com/api/v1/organizations/$WERCKER_OPBEAT_NOTIFY_ORG_ID/apps/$WERCKER_OPBEAT_NOTIFY_APP_ID/releases/ \
+    -H "Authorization: Bearer $WERCKER_OPBEAT_NOTIFY_SECRET_TOKEN" \
+    -d rev=$WERCKER_GIT_COMMIT \
+    -d branch=$WERCKER_GIT_BRANCH \
+    -d status=completed \
+    --silent \
+    --write-out "%{http_code}" \
+    --output /dev/stderr
+
 result=`curl https://opbeat.com/api/v1/organizations/$WERCKER_OPBEAT_NOTIFY_ORG_ID/apps/$WERCKER_OPBEAT_NOTIFY_APP_ID/releases/ \
     -H "Authorization: Bearer $WERCKER_OPBEAT_NOTIFY_SECRET_TOKEN" \
     -d rev=$WERCKER_GIT_COMMIT \
@@ -34,7 +43,7 @@ result=`curl https://opbeat.com/api/v1/organizations/$WERCKER_OPBEAT_NOTIFY_ORG_
     --output /dev/stderr`
 
 
-if [ "$result" = "200" ]; then
+if [ "$result" = "202" ]; then
   success "Notified Opbeat"
 else
   fail "Failed to notify Opbeat"
