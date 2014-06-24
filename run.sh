@@ -33,7 +33,8 @@ result=`curl https://opbeat.com/api/v1/organizations/$WERCKER_OPBEAT_NOTIFY_ORG_
     --write-out "%{http_code}" \
     --output /dev/stderr`
 
-
+echo
+echo 
 if [ "$result" = "202" ]; then
   success "Notified Opbeat"
 else
